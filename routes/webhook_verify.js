@@ -2,7 +2,7 @@ const processPostback = require('../process1/postback')
 module.exports = function (app, chalk) {
     app.get('/webhook', function (req, res) {
         console.log(req.query)
-        if (req.query['hub.verify_token'] === 'EAAC7rfotrGoBAJ5XnbuPrwiqyZBLhNyRtoynSV7T4uxOya8ZBowpY8kvPdGuxhZBkUcGtlVgzPgYxuzk5pEtZAQwNxwrcrfZACs5Gks5ZBY5AYSXzP4mWFn0YZAAog3RkNovP2sqdg2ZANdlYi9v1BA0lSx8e50J9aCq0eZA3Y6aa3ATZCthZC0uFourDZC6pLC9GzYZD') {
+        if (req.query['hub.verify_token'] === 'chegu123$') {
             console.log('webhook verified');
             res.status(200).send(req.query['hub.challenge']);
         } else {
