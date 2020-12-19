@@ -2,7 +2,7 @@ const request = require('request');
 module.exports = function senderAction(recipientId) {
     request({
         url: "https://graph.facebook.com/v2.6/me/messages",
-        qs: { access_token: 'EAAC7rfotrGoBAJ5XnbuPrwiqyZBLhNyRtoynSV7T4uxOya8ZBowpY8kvPdGuxhZBkUcGtlVgzPgYxuzk5pEtZAQwNxwrcrfZACs5Gks5ZBY5AYSXzP4mWFn0YZAAog3RkNovP2sqdg2ZANdlYi9v1BA0lSx8e50J9aCq0eZA3Y6aa3ATZCthZC0uFourDZC6pLC9GzYZD' },
+        qs: { access_token: 'EAAC7rfotrGoBABTro1jZCxFoUIsqTKO6GZBg2SNjXsRq0ogsAi0lcyZAbaEkCW9NOBals8XKXBw4bziahdmj6PWu2ZBEliJmOyvZAh4K1ydci6HesTRWKHsxPR0iHgCsZBqlNS9vIOL9Cews4UhZCryy8WqDDsOBSa8QIFkdW2ZC8l50G4fa9IbRRg7EjvoWsdQZD' },
         method: "POST",
         json: {
             recipient: { id: recipientId },

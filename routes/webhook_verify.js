@@ -27,24 +27,45 @@ module.exports = function (app, chalk) {
 
     app.post('/webhook', function (req, res) {
         //checking for page subscription.
-        if (req.body.object === 'page') {
+        // if (req.body.object === 'page') {
 
-            /* Iterate over each entry, there can be multiple entries 
-            if callbacks are batched. */
-            req.body.entry.forEach(function (entry) {
-                // Iterate over each messaging event
-                entry.messaging.forEach(function (event) {
-                    console.log(event);
-                    if (event.postback) {
-                        processPostback(event);
-                        console.log('postback')
-                    } else if (event.message) {
-                        // processMessage(event);
-                        console.log('post message')
-                    }
-                });
+        //     /* Iterate over each entry, there can be multiple entries 
+        //     if callbacks are batched. */
+        //     req.body.entry.forEach(function (entry) {
+        //         // Iterate over each messaging event
+        //         entry.messaging.forEach(function (event) {
+        //             console.log(event);
+        //             if (event.postback) {
+        //                 processPostback(event);
+        //                 console.log('postback')
+        //             } else if (event.message) {
+        //                 // processMessage(event);
+        //                 console.log('post message')
+        //             }
+        //         });
+        //     });
+        //     res.sendStatus(200);
+        // }
+        let body = req.body;
+
+        // Checks this is an event from a page subscription
+        if (body.object === 'page') {
+
+            // Iterates over each entry - there may be multiple if batched
+            body.entry.forEach(function (entry) {
+
+                // Gets the message. entry.messaging is an array, but 
+                // will only ever contain one message, so we get index 0
+                let webhook_event = entry.messaging[0];
+                console.log(webhook_event);
             });
-            res.sendStatus(200);
+
+            // Returns a '200 OK' response to all requests
+            res.status(200).send('EVENT_RECEIVED');
+        } else {
+            // Returns a '404 Not Found' if event is not from a page subscription
+            res.sendStatus(404);
         }
+
     });
 }
