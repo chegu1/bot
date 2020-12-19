@@ -1,4 +1,4 @@
-const processPostback = require('../processes/postback');
+const processPostback = require('../process1/postback')
 module.exports = function (app, chalk) {
     app.get('/webhook', function (req, res) {
         console.log(req.query)

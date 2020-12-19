@@ -1,7 +1,7 @@
 const request = require('request');
-const senderAction = require('../templates/senderAction');
+const senderAction = require('../templates/senderAction')
 const sendMessage = require('../templates/sendMessage');
-module.exports = function processPostback(event) {
+const processPostback = (event) => {
     const senderID = event.sender.id;
     const payload = event.postback.payload;
     if (payload === 'WELCOME') {
@@ -36,3 +36,5 @@ module.exports = function processPostback(event) {
         });
     }
 }
+
+module.exports = processPostback;
